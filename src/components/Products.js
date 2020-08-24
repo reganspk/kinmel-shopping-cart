@@ -64,7 +64,7 @@ class Products extends Component {
               </button>
               <div className="product-details">
                 <img src={product.image} alt={product.title} />
-                <div className="product-details-descripition">
+                <div className="product-details-description">
                   <p>
                     <strong>{product.title}</strong>
                   </p>
@@ -101,6 +101,9 @@ class Products extends Component {
 }
 
 //need to be corrected
-export default connect((state) => ({ products: state.products.items }), {
-  fetchProducts,
-})(Products);
+export default connect(
+  (state) => ({ products: state.products.filteredItems }),
+  {
+    fetchProducts,
+  }
+)(Products);
