@@ -12,6 +12,9 @@ class Products extends Component {
       product: null,
     };
   }
+  componentDidMount() {
+    this.props.fetchProducts();
+  }
   openModal = (product) => {
     this.setState({ product });
   };
@@ -24,7 +27,7 @@ class Products extends Component {
       <div>
         <Fade bottom cascade>
           {!this.props.products ? (
-            <div>Loading....</div>
+            <div>Loading...</div>
           ) : (
             <ul className="products">
               {this.props.products.map((product) => (
@@ -43,7 +46,7 @@ class Products extends Component {
                         onClick={() => this.props.addToCart(product)}
                         className="button primary"
                       >
-                        Add to Cart
+                        Add To Cart
                       </button>
                     </div>
                   </div>
@@ -52,6 +55,7 @@ class Products extends Component {
             </ul>
           )}
         </Fade>
+
         {product && (
           <Modal isOpen={true} onRequestClose={this.closeModal}>
             <Zoom>
@@ -95,6 +99,8 @@ class Products extends Component {
     );
   }
 }
-export default connect((state) => ({ products: state.products }), {
+
+//need to be corrected
+export default connect((state) => ({ products: state.products.items }), {
   fetchProducts,
 })(Products);
