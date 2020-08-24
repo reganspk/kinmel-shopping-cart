@@ -70,7 +70,7 @@ class Cart extends Component {
                   </li>
                   <li>
                     <div>Date:</div>
-                    <div>{order.createdAt}</div>
+                    <div>{order.createdAtbr}</div>
                   </li>
                   <li>
                     <div>Total:</div>
@@ -194,7 +194,5 @@ export default connect(
     cartItems: state.cart.cartItems,
   }),
 
-  removeFromCart,
-  createOrder,
-  clearOrder
+  { removeFromCart, createOrder, clearOrder }
 )(Cart);
